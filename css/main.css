@@ -1,0 +1,60 @@
+/* 
+    Document   : main
+    Created on : 06.06.2011, 16:27:37
+    Author     : Benjamin Kleiner
+    Description:
+        Main styles for the shortcode editor
+*/
+
+#shortcode-editor { 
+    display: block;
+	wdith: 100%;
+}
+
+#shortcode-editor textarea {
+	height: 10em;
+}
+
+#shortcode-editor td:nth-of-type(2n) {
+	width: 100%;
+}
+
+#shortcode-editor td:nth-of-type(2n) * {
+	width: 90%;
+}
+
+#shortcode-editor tr td:nth-of-type(2n):before, #shortcode-editor tr td:nth-of-type(2n):after {
+	display: inline-block;
+	width: 1em;
+	white-space: pre;
+	content: ' ';
+	text-align: center;
+}
+
+#shortcode-editor td.name-editor-cell:before {
+	content: '[' !important;
+}
+
+#shortcode-editor td.name-editor-cell:after {
+	content: ']' !important;
+}
+.shortcode-list .column-name {
+	width: 6em;
+}
+
+.shortcode-list .column-icon {
+	width: 4em;
+}
+
+.shortcode-list .column-title {
+	width: 10em;
+}
+
+.shortcode-list td.column-replacement {
+	background: #EAEAEA;
+}
+
+.shortcode-list .column-mode, .shortcode-list .column-edit {
+	width: 6em;
+	text-align: center;
+}

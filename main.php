@@ -52,6 +52,7 @@ class Shortcode_Buttons {
 				array(__CLASS__, 'manage_shortcodes')
 		);
 		wp_enqueue_script("jquery");
+		wp_enqueue_style(__CLASS__ . '_main', join_path(plugin_dir_url(__FILE__), 'css', 'main.css'));
 	}
 
 	public static function manage_shortcodes() {
@@ -113,12 +114,12 @@ class Shortcode_Buttons {
 			$table->append(
 				tag('tr')->addClass('alternate', 'author-self', 'status-inherit')->append(
 					tag('th')->addClass('check-column')->attr('scope', 'row')->append(checkbox('deleteMe[]', "deleteMe-{$name}", false, false, $name)),
-					tag('td')->append($name),
-					tag('td')->append(img($options['icon'])),
-					tag('td')->append($options['title']),
-					tag('td')->append(code(htmlentities($options['replacement']))),
-					tag('td')->append($modes[$options['mode']]),
-					tag('td')->append(
+					tag('td')->addClass('column-name')->append($name),
+					tag('td')->addClass('column-icon')->append(img($options['icon'])),
+					tag('td')->addClass('column-title')->append($options['title']),
+					tag('td')->addClass('column-replacement')->append(code(htmlentities($options['replacement']))),
+					tag('td')->addClass('column-mode')->append($modes[$options['mode']]),
+					tag('td')->addClass('column-edit')->append(
 						tag('button')->attr(array(
 							'type' => 'button',
 							'data-options' => json_encode(array_merge(array('name' => $name), $options))
@@ -150,16 +151,16 @@ EOF
 		));
 		echo div(
 			$form = tag('form')->attr(array('action' => '', 'method' => 'post'))->append(
-				tag('table')->addClass('wp-list-table', 'widefat', 'fixed')->append(
+				tag('table')->addClass('wp-list-table', 'widefat', 'fixed', 'shortcode-list')->append(
 					tag('thead')->append(
 						tag('tr')->append(
 							tag('th')->addClass('manage-column', 'column-cb', 'check-column')->attr('scope', 'col')->append(checkbox('cb', 'cb')->addClass('check-all')),
-							tag('th')->addClass('manage-column')->attr('scope', 'col')->append(__('Shortcode', self::$domain)),
-							tag('th')->addClass('manage-column')->attr('scope', 'col')->append(__('Button Icon', self::$domain)),
-							tag('th')->addClass('manage-column')->attr('scope', 'col')->append(__('Button Title', self::$domain)),
-							tag('th')->addClass('manage-column')->attr('scope', 'col')->append(__('Replacement Text', self::$domain)),
-							tag('th')->addClass('manage-column')->attr('scope', 'col')->append(__('Replacement Mode', self::$domain)),
-							tag('th')->addClass('manage-column')->attr('scope', 'col')->append(__('Edit', self::$domain))
+							tag('th')->addClass('manage-column', 'column-name')->attr('scope', 'col')->append(__('Shortcode', self::$domain)),
+							tag('th')->addClass('manage-column', 'column-icon')->attr('scope', 'col')->append(__('Icon', self::$domain)),
+							tag('th')->addClass('manage-column', 'column-title')->attr('scope', 'col')->append(__('Title', self::$domain)),
+							tag('th')->addClass('manage-column', 'column-replacement')->attr('scope', 'col')->append(__('Replacement Text', self::$domain)),
+							tag('th')->addClass('manage-column', 'column-mode')->attr('scope', 'col')->append(__('Mode', self::$domain)),
+							tag('th')->addClass('manage-column', 'column-edit')->attr('scope', 'col')->append(__('Edit', self::$domain))
 						)
 					),
 					$table
@@ -172,13 +173,13 @@ EOF
 						tag('td')->append(
 							tag('label')->attr('for', 'name')->append(__('Shortcode', self::$domain))
 						),
-						tag('td')->append(
-							'[', tag('input')->attr(array('type' => 'text', 'name' => 'name', 'id' => 'name', 'value' => $defaults['name'])), ']'
+						tag('td')->addClass('name-editor-cell')->append(
+							tag('input')->attr(array('type' => 'text', 'name' => 'name', 'id' => 'name', 'value' => $defaults['name']))
 						)
 					),
 					tag('tr')->append(
 						tag('td')->append(
-							tag('label')->attr('for', 'icon')->append(__('Button Icon', self::$domain))
+							tag('label')->attr('for', 'icon')->append(__('Icon', self::$domain))
 						),
 						tag('td')->append(
 							tag('input')->attr(array('type' => 'text', 'name' => 'icon', 'id' => 'icon', 'value' => $defaults['icon']))
@@ -202,7 +203,7 @@ EOF
 					),
 					tag('tr')->append(
 						tag('td')->append(
-							tag('label')->attr('for', 'mode')->append(__('Replacement Mode', self::$domain))
+							tag('label')->attr('for', 'mode')->append(__('Mode', self::$domain))
 						),
 						tag('td')->append(
 							tag('select')->attr(array(
