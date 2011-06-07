@@ -224,7 +224,10 @@ EOF
 	}
 	
 	private static function get_shortcodes() {
-		return unserialize(get_site_option('ms-shortcodes', '', false));
+		$f = unserialize(get_site_option('ms-shortcodes', '', false));
+		if (!$f)
+			$f = array();
+		return $f;
 	}
 	
 	private static function set_shortcodes($shortcodes) {
