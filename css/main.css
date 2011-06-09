@@ -7,7 +7,7 @@
 */
 
 #shortcode-editor { 
-    display: block;
+	display: block;
 	wdith: 100%;
 }
 
@@ -39,7 +39,10 @@
 	content: ']' !important;
 }
 .shortcode-list .column-name {
-	width: 6em;
+	width: 8em;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 .shortcode-list .column-icon {
