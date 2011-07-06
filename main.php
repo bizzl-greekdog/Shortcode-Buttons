@@ -14,7 +14,11 @@ if (!function_exists('join_path')) {
 
 	function join_path() {
 		$fuck = func_get_args();
-		return implode(DIRECTORY_SEPARATOR, $fuck);
+		for ($i = 0; $i < count($fuck); $i++)
+			if (is_array($fuck[$i]))
+				array_splice($fuck, $i, 1, $fuck[$i]);
+		$f = implode(DIRECTORY_SEPARATOR, $fuck);
+		return preg_replace('/(?<!:)\\' . DIRECTORY_SEPARATOR . '+/', DIRECTORY_SEPARATOR, $f);
 	}
 
 }
