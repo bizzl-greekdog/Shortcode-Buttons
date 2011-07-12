@@ -1,14 +1,31 @@
 <?php
-
 /*
-  Plugin Name: Shortcode Buttons
-  Plugin URI:
-  Description: Allows the super admin to create shortcodes and corresponding buttons in the rich editor.
-  Version: 1.0.0
-  Author: Benjamin Kleiner <bizzl@users.sourceforge.net>
-  Author URI:
-  License: LGPL3
- */
+Plugin Name:	Shortcode Buttons
+Plugin URI:		https://github.com/bizzl-greekdog/Shortcode-Buttons
+Description:	Allows the super admin to create shortcodes and corresponding buttons in the rich editor.
+Version:		1.0.0
+Author:			Benjamin Kleiner
+Author URI:		https://github.com/bizzl-greekdog
+License:		LGPL3
+*/
+/*
+    Copyright (c) 2011 Benjamin Kleiner <bizzl@users.sourceforge.net>
+ 
+    This file is part of Shortcode Buttons.
+
+    Shortcode Buttons is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Shortcode Buttons is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Shortcode Buttons. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 if (!function_exists('join_path')) {
 
